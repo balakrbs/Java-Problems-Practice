@@ -1,0 +1,45 @@
+// Array Element Insertion and deletion
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] originalArray = {10, 20, 30, 40, 50};
+        System.out.println(Arrays.toString(originalArray));
+        
+        int[] afterInsert=insertElement(originalArray,2,25);
+        System.out.println(Arrays.toString(afterInsert));
+        
+        int[] afterDelete=deleteElement(afterInsert,3);
+        System.out.println(Arrays.toString(afterDelete));
+    }
+    
+    public static int[] insertElement(int[] arr, int index, int element){
+        if(index<0 || index>arr.length){
+            throw new IndexOutOfBoundsException("Invalid index for insertion !!");
+        }
+        
+        int[] newArray=new int[arr.length+1];
+        for(int i=0,j=0;i<newArray.length;i++){
+            if(i==index){
+                newArray[i]=element;
+            }else{
+                newArray[i]=arr[j++];
+            }
+        }
+        return newArray;
+    }
+    
+    public static int[] deleteElement(int[] arr,int index){
+        if(index<0 || index>arr.length){
+            throw new IndexOutOfBoundsException("Invalid index for deletion");
+        }
+        
+        int[] newArray=new int[arr.length-1];
+        for(int i=0,j=0;i<arr.length;i++){
+            if(i!=index){
+                newArray[j++]=arr[i];
+            }
+        }
+        return newArray;
+    }
+}
